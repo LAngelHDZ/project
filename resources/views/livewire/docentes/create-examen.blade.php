@@ -4,7 +4,7 @@
     <div class="shadow rounded-lg bg-white my-4">
         <div class="p-4 my-5">
             <h4 class="font-sans text-2xl text-gray-600">Crear Examen</h4>
-            <form action="" method="post" class="mt-3" wire:submit.prevent="storeExamen">
+            <form class="mt-3" wire:submit.prevent="storeExamen">
                 <div class="mb-3 -mx-2 flex items-end">
                     <div class="px-2 w-1/2">
                         <label class="font-bold text-sm mb-2 ml-1">Titulo</label>

@@ -134,8 +134,8 @@ class PrivateController extends Controller
         return view('docente.miHorario');
     }
 
-    public function formActividadesTemaCurso($curso, $tema){
-        return view('docente.addActividadTema', ['curso' => $curso, 'tema' => $tema ]);
+    public function formActividadesTemaCurso($curso, $idtype, $type){
+        return view('docente.addActividadTema', ['curso' => $curso, 'idtype' => $idtype, 'type' =>$type ]);
     }
 
     public function descripcionAlumno($curso, $alumno){

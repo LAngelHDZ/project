@@ -66,9 +66,22 @@
     </h2>
     
     <div class="form-task px-8">
-      @foreach($materia as $item)
-        <livewire:docentes.temas-curso :idMateria="$item->idMateria" :idCurso="$curso->idCurso" />
-      @endforeach
+        {{-- <button @click="open(show)" x-text="title" onclick="this.blur()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"></button> --}}
+        @if($viewer[0]->view==0)
+          <div>
+            @foreach($materia as $item)
+              <livewire:docentes.temas-curso :idMateria="$item->idMateria" :idCurso="$curso->idCurso" />
+            @endforeach
+
+          </div>
+        @endif
+        @if($viewer[0]->view==1)
+          <div>
+            <livewire:actividad-semanas :idperiodo="$periodo->idPeriodo" :idcurso="$curso->idCurso" />
+              
+          </div>
+        @endif
+
     </div>
     
     <h2 class="font-sans text-2xl text-gray-800 m-4">
@@ -88,5 +101,24 @@
     </div>
 
   </div>
+  {{-- <script>
+    function toggle(){
+        return{
+            show: true,
+            title: 'Temas',
 
+            open:function(show) {
+                if(!show){
+                    this.show = true; this.title ="Temas";
+
+                }else{
+                    this.show = false; this.title="Semanas";
+                }
+            },
+            isOpen(){ return this.show === true}
+
+        }   
+    } --}}
+
+</script>
 </x-app-layout>

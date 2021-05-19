@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cursos;
 use App\Models\Asignatura;
-
+use App\Models\option;
 
 class CursosController extends Controller
 {
@@ -51,10 +51,11 @@ class CursosController extends Controller
     public function show($id)
     {
         //
+        $viewer =option::all();
         $curso = Cursos::where('idCurso', $id)->first();
         $materia = Asignatura::where('idMateria', $curso->materia_id)->get();
         $periodo = DB::table('periodo')->where('idPeriodo', $curso->periodo_id)->first();
-        return view('docente.showCurso')->with(compact('curso','materia','periodo'));
+        return view('docente.showCurso')->with(compact('curso','materia','periodo','viewer'));
     }
 
     /**

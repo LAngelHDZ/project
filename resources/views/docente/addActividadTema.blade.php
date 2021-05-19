@@ -10,6 +10,6 @@
             </svg>
             <p class="mx-2">Volver</p>
         </a>
-       <livewire:docentes.form-actividades :curso="$curso" :tema="$tema" /> 
+       <livewire:docentes.form-actividades :curso="$curso" :idtype="$idtype" :type="$type" /> 
     </div>
 </x-app-layout>

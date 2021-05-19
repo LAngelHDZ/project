@@ -4,26 +4,48 @@
     <div>
         <div class="mt-5">
             <div class="my-5 mx-10 md:mt-0 md:col-span-2">
-                <form action="" wire:submit.prevent="actividadStore" enctype="multipart/form-data">
+                <form action="post" wire:submit.prevent="actividadStore" enctype="multipart/form-data">
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                             <div>
-                                <label for="semana" class="block font-medium text-gray-700">Seleccione Semana</label>
-                                <div class="inline-block relative w-full">
-                                    <select name="genero" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('semanaAct') border-red-600 @enderror"
-                                    wire:model="semanaAct">
-                                      <option value="" selected>Seleccione</option>
-                                      @foreach($semanas as $item)
-                                      <option value="{{ $item->idSemanas }}">{{ 'Del '.$item->finicio.' - '.$item->ffinal  }}</option>
-                                      @endforeach
-                                    </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                @if($type==0)
+                                    <label for="semana" class="block font-medium text-gray-700">Seleccione Semana</label>
+                                    <div class="inline-block relative w-full">
+                                        <select name="genero" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('semanaAct') border-red-600 @enderror"
+                                        wire:model="idformtype">
+                                        <option value="" selected>Seleccione</option>
+                                        @foreach($semanas as $item)
+                                        <option value="{{ $item->idSemanas }}">{{ 'Del '.$item->finicio.' - '.$item->ffinal  }}</option>
+                                        @endforeach
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                        </div>
                                     </div>
-                                </div>
-                                @error('semanaAct')
-                                <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
-                                @enderror
+                                    @error('semanaAct')
+                                    <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                                    @enderror
+
+
+                                @else
+                                
+                                    <label for="tema" class="block font-medium text-gray-700">Seleccione Tema</label>
+                                    <div class="inline-block relative w-full">
+                                        <select name="genero" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('semanaAct') border-red-600 @enderror"
+                                        wire:model="idformtype">
+                                        <option value="" selected>Seleccione</option>
+                                        @foreach($temas as $item)
+                                        <option value="{{ $item->idTema }}">{{ $item->indice.' '.$item->nombreTema  }}</option>
+                                        @endforeach
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                        </div>
+                                    </div>
+                                    @error('semanaAct')
+                                    <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                                    @enderror
+                                @endif
                             </div>
 
                             <div>
