@@ -1,12 +1,9 @@
 <div>
     <div class="">
-        
         <section x-data="togg()">
-            
             <div class="flex justify-end">
-                {{-- {!!Form::submit('Activar edicción', ['class'=>'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ',])!!} --}}
+               
                 <button @click="open(view)" x-text="text" onclick="this.blur()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"></button>
-                {{-- <a href="javascript:document.getElementById('show').style.display='block';void0">Activar edicción</a> --}}
             </div>
             <div class="p-1  border-gray-300 border-solid border mt-3">
                 @foreach ($semanas as $itema)
@@ -41,11 +38,9 @@
                                             <div class="pl-4 my-2 " >
                                                 <ul class="">
                                                     <li>
-                                                        
                                                         {{$itemb->nombreActividad}}
                                                         {{-- {!!  link_to_route('cursos.question', $title = $itemb->act, $parameters = [$itemb->id], $attributes = ['class'=>''])!!} --}}
                                                         {{-- {!!  link_to_route('cursos.question', $title = $itema->nombreActividad, $attributes = ['class'=>''])!!} --}}
-
                                                     </li>
                                                 </ul>
                                             </div>
@@ -68,8 +63,6 @@
                 @endforeach    
             </div>
         </section>
-
-    
 
         <script>
             function togg(){
