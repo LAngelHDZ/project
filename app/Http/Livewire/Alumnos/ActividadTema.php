@@ -4,18 +4,28 @@ namespace App\Http\Livewire\Alumnos;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
-use Models\Actividades;
+use App\Models\semana;
+use App\Models\Actividades;
 
 class ActividadTema extends Component
 {
+    public $idperiodo,$semanas,$actividades;
     public $actividadTema, $cursoid, $examenCurso;
 
     public function render()
     {
         $this->getActividadTema();
         $this->getExamen();
+        $this->showsemanas();
         return view('livewire.alumnos.actividad-tema');
     }
+
+    public function showsemanas(){
+        $this->actividades = Actividades::join('semanas','actividadtemas.semana_id','=','semanas.idSemanas')
+        ->select('actividadtemas.idActividadTemas','actividadtemas.semana_id','actividadtemas.nombreActividad','actividadtemas.descripcionActividad')
+        ->where('semanas.periodo_id',1)->get();
+        $this->semanas = semana::where('periodo_id',1)->get();
+     }
 
     public function getActividadTema(){
         /*$this->actividadTema = DB::table('temas')

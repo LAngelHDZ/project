@@ -35,7 +35,7 @@
 
   <div class="container mx-auto px-4 mt-5">
     <div class="flex flex-col">
-      <livewire:alumnos.actividad-tema :cursoid="$idCurso" />
+      <livewire:alumnos.actividad-tema :cursoid="$idCurso" :idperiodo="$curso[0]->periodo"  />
     </div>
   </div>
   

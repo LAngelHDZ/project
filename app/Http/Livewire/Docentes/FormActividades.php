@@ -22,7 +22,7 @@ class FormActividades extends Component
         'descripcionActividad' => 'required|string',
         'fechaInicio' => 'required|date',
         'fechaLimite' => 'required|date',
-        'semanaAct' => 'required|integer',
+        'idformtype' => 'required|integer',
         'porcentaje' => 'required|integer|min:0|max:100',
         'tipoActividad' => 'required'
         //'puntuacion' => 'required|integer|min:0|max:100'
@@ -33,7 +33,7 @@ class FormActividades extends Component
         'descripcionActividad.required' => 'Este campo es requerido.',
         'fechaInicio.required' => 'Este campo es requerido.',
         'fechaLimite.required' => 'Este campo es requerido.',
-        'semanaAct.required' => 'Este campo es requerido.',
+        'idformtype.required' => 'Este campo es requerido.',
         'tipoActividad.required' => 'Este campo es requerido.',
         'porcentaje.required' => 'Este campo es requerido.',
         'porcentaje.min' => 'El valor minimo es 1',
@@ -119,30 +119,29 @@ class FormActividades extends Component
             $actividad->curso_id = $this->curso;
             $actividad->semana_id = $this->semanas;
             $actividad->save();
-
-            session()->flash('message', 'La actividad fue agregada.');
-
-            return redirect()->route('cursos_docentes.show',$this->curso);
-
         }
-        $this->validate([
-            'recurso' => 'max:25600', // 25MB Max
-            'recurso.max' => 'Tamaño maximo de archivo es de 25MB.'
-        ]);
+        else{
 
-        $actividad = new Actividades;
-        $actividad->nombreActividad = $this->nombreActividad;
-        $actividad->descripcionActividad = $this->descripcionActividad;
-        $actividad->recursos = $this->recurso->store('public'); 
-        $actividad->tipoActividad = $this->tipoActividad;  
-        $actividad->porcentajeCurso = $this->porcentaje;
-        //$actividad->puntuacion = $this->puntuacion;
-        $actividad->fechainicio = $this->fechaInicio;
-        $actividad->fechalimite = $this->fechaLimite;
-        $actividad->temas_id = $this->temas;
-        $actividad->curso_id = $this->curso;
-        $actividad->semana_id = $this->semanas;
-        $actividad->save();
+            $this->validate([
+                'recurso' => 'max:25600', // 25MB Max
+                'recurso.max' => 'Tamaño maximo de archivo es de 25MB.'
+            ]);
+    
+            $actividad = new Actividades;
+            $actividad->nombreActividad = $this->nombreActividad;
+            $actividad->descripcionActividad = $this->descripcionActividad;
+            $actividad->recursos = $this->recurso->store('public'); 
+            $actividad->tipoActividad = $this->tipoActividad;  
+            $actividad->porcentajeCurso = $this->porcentaje;
+            //$actividad->puntuacion = $this->puntuacion;
+            $actividad->fechainicio = $this->fechaInicio;
+            $actividad->fechalimite = $this->fechaLimite;
+            $actividad->temas_id = $this->temas;
+            $actividad->curso_id = $this->curso;
+            $actividad->semana_id = $this->semanas;
+            $actividad->save();
+        }
+       
 
         session()->flash('message', 'La actividad fue agregada.');
 
